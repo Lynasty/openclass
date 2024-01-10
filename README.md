@@ -4,3 +4,4 @@ Site de formation fictif
 Nextjs, Stripe, Tailwind, Clerk, Svix, MongoDB
 
 ## Vercel
+[openclass-nu.vercel.app](openclass-nu.vercel.app)
