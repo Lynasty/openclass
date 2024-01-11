@@ -6,7 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ICategory } from "@/lib/database/models/category.model";
-import { startTransition, useEffect, useState } from "react";
+import { startTransition, useEffect, useRef, useState } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,8 +19,10 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Input } from "../ui/input";
-import { createCategory, getAllCategories } from "@/lib/actions/category.actions";
-
+import {
+  createCategory,
+  getAllCategories,
+} from "@/lib/actions/category.actions";
 
 type DropdownProps = {
   value?: string;
@@ -50,50 +52,52 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
   }, []);
 
   return (
-    <Select onValueChange={onChangeHandler} defaultValue={value}>
-      <SelectTrigger className="select-field">
-        <SelectValue placeholder="Category" />
-      </SelectTrigger>
-      <SelectContent>
-        {categories.length > 0 &&
-          categories.map((category) => (
-            <SelectItem
-              key={category._id}
-              value={category._id}
-              className="select-item p-regular-14"
-            >
-              {category.name}
-            </SelectItem>
-          ))}
-
-        <AlertDialog>
-          <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500">
-            Add new category
-          </AlertDialogTrigger>
-          <AlertDialogContent className="bg-white">
-            <AlertDialogHeader>
-              <AlertDialogTitle>New Category</AlertDialogTitle>
-              <AlertDialogDescription>
-                <Input
-                  type="text"
-                  placeholder="Category name"
-                  className="input-field mt-3"
-                  onChange={(e) => setNewCategory(e.target.value)}
-                />
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction
-                onClick={() => startTransition(handleAddCategory)}
+    <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+      <Select onValueChange={onChangeHandler} defaultValue={value}>
+        <SelectTrigger className="select-field">
+          <SelectValue placeholder="Category" />
+        </SelectTrigger>
+        <SelectContent>
+          {categories.length > 0 &&
+            categories.map((category) => (
+              <SelectItem
+                key={category._id}
+                value={category._id}
+                className="select-item p-regular-14"
               >
-                Add
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      </SelectContent>
-    </Select>
+                {category.name}
+              </SelectItem>
+            ))}
+        </SelectContent>
+      </Select>
+      <AlertDialog>
+        <AlertDialogTrigger className="p-medium-14 flex rounded-sm py-3 px-4 text-primary-500 hover:bg-primary-50 focus:text-primary-500">
+          Add
+        </AlertDialogTrigger>
+        <AlertDialogContent className="bg-white">
+          <AlertDialogHeader>
+            <AlertDialogTitle>New Category</AlertDialogTitle>
+            <AlertDialogDescription>
+              <Input
+                id="inputC"
+                type="text"
+                placeholder="Category name"
+                className="input-field mt-3"
+                onChange={(e) => setNewCategory(e.target.value)}
+              />
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => startTransition(handleAddCategory)}
+            >
+              Add
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
   );
 };
 
