@@ -1,3 +1,4 @@
+import CheckoutButton from "@/components/shared/CheckoutButton";
 import Collection from "@/components/shared/Collection";
 import { getEventById, getRelatedEventsByCategory } from "@/lib/actions/event.actions";
 import { formatDateTime } from "@/lib/utils";
@@ -13,7 +14,10 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
     categoryId: event.category._id,
     page: searchParams.page as string
   });
-
+  const price = new Intl.NumberFormat("fr-FR", {
+    style: "currency",
+    currency: "EUR",
+  }).format(parseFloat(event.price));
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
@@ -33,7 +37,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="flex gap-3">
                   <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-700">
-                    {event.isFree ? "FREE" : `$${event.price}`}
+                    {event.isFree ? "FREE" : `${price}`}
                   </p>
                   <p className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
                     {event.category.name}
@@ -49,7 +53,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
               </div>
             </div>
 
-            {/* <CheckoutButton event={event} /> */}
+            <CheckoutButton event={event} />
 
             <div className="flex flex-col gap-5">
               <div className="flex gap-2 md:gap-3">
