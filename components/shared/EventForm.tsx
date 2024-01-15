@@ -40,12 +40,12 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
     event && type === "Update"
       ? {
           ...event,
+          categoryId: event.category._id,
           startDateTime: new Date(event.startDateTime),
           endDateTime: new Date(event.endDateTime),
         }
       : eventDefaultValues;
   const router = useRouter();
-
   const { startUpload } = useUploadThing("imageUploader");
 
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -131,8 +131,8 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <Dropdown
-                    onChangeHandler={field.onChange}
                     value={field.value}
+                    onChangeHandler={field.onChange}
                   />
                 </FormControl>
                 <FormMessage />

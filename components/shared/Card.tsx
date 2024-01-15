@@ -16,6 +16,10 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
    const userId = sessionClaims?.userId as string;
 
    const isEventCreator = userId === event.organizer._id.toString();
+   const price = new Intl.NumberFormat("fr-FR", {
+     style: "currency",
+     currency: "EUR",
+   }).format(parseInt(event.price, 10));
 
    return (
      <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
@@ -45,7 +49,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
          {!hidePrice && (
            <div className="flex gap-2">
              <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-60">
-               {event.isFree ? "FREE" : `$${event.price}`}
+               {event.isFree ? "FREE" : `${price}`}
              </span>
              <p className="p-semibold-14 min-w-min max-w-64  rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1">
                {event.category.name}

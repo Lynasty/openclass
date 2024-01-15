@@ -50,7 +50,6 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
 
     getCategories();
   }, []);
-
   return (
     <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
       <Select onValueChange={onChangeHandler} defaultValue={value}>
