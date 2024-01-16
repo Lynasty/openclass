@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { frFR } from "@clerk/localizations";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -10,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Darwins events",
-  description: "Darwin greatest events of the world",
+  title: "OpenTea",
+  description: "Cultivons les compétences",
   icons: {
     icon: "/assets/images/logo.svg",
   },
@@ -23,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
+    <ClerkProvider localization={frFR}>
+      <html lang="fr">
         <body className={poppins.variable}>{children}</body>
       </html>
     </ClerkProvider>

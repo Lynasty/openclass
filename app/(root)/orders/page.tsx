@@ -13,11 +13,11 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
   return (
     <>
       <section className=" bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
-        <h3 className="wrapper h3-bold text-center sm:text-left ">Orders</h3>
+        <h3 className="wrapper h3-bold text-center sm:text-left ">Commandes</h3>
       </section>
 
       <section className="wrapper mt-8">
-        <Search placeholder="Search buyer name..." />
+        <Search placeholder="Rechercher un nom..." />
       </section>
 
       <section className="wrapper overflow-x-auto">
@@ -26,18 +26,18 @@ const Orders = async ({ searchParams }: SearchParamProps) => {
             <tr className="p-medium-14 border-b text-grey-500">
               <th className="min-w-[250px] py-3 text-left">Order ID</th>
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
-                Event Title
+                Titre Evènement
               </th>
-              <th className="min-w-[150px] py-3 text-left">Buyer</th>
-              <th className="min-w-[100px] py-3 text-left">Created</th>
-              <th className="min-w-[100px] py-3 text-right">Amount</th>
+              <th className="min-w-[150px] py-3 text-left">Acheteur</th>
+              <th className="min-w-[100px] py-3 text-left">Créé</th>
+              <th className="min-w-[100px] py-3 text-right">Prix</th>
             </tr>
           </thead>
           <tbody>
             {orders && orders.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
-                  No orders found.
+                  Aucune commande trouvée.
                 </td>
               </tr>
             ) : (
