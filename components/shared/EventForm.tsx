@@ -26,6 +26,7 @@ import { handleError } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { createEvent, updateEvent } from "@/lib/actions/event.actions";
 import { IEvent } from "@/lib/database/models/event.model";
+import { Locale } from "date-fns";
 
 type EventFormProps = {
   userId: string;
@@ -33,6 +34,33 @@ type EventFormProps = {
   event?: IEvent;
   eventId?: string;
 };
+
+const jours = ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"];
+const mois = [
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre",
+];
+
+const locale:Locale = {
+  localize: {
+    day: (n:number) => jours[n],
+    month: (n:number) => mois[n],
+  },
+  formatLong: {
+    date: () => "dd/mm/yyyy",
+  },
+};
+
 
 const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
@@ -222,12 +250,16 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       Date de début:{" "}
                     </p>
                     <DatePicker
+                      locale={locale}
+                      calendarStartDay={1}
                       selected={field.value}
                       onChange={(date: Date) => field.onChange(date)}
                       showTimeSelect
                       minDate={new Date()}
-                      timeInputLabel="Time:"
-                      dateFormat="dd/MM/yyyy h:mm aa"
+                      dateFormat="dd/MM/yyyy HH:mm"
+                      timeInputLabel="Heure:"
+                      timeCaption="Heure"
+                      timeFormat="HH:mm"
                       wrapperClassName="datePicker"
                     />
                   </div>
@@ -255,12 +287,16 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       Date de fin:{" "}
                     </p>
                     <DatePicker
+                      locale={locale}
                       selected={field.value}
                       onChange={(date: Date) => field.onChange(date)}
                       showTimeSelect
                       minDate={new Date()}
-                      timeInputLabel="Time:"
-                      dateFormat="dd/MM/yyyy h:mm aa"
+                      dateFormat="dd/MM/yyyy HH:mm"
+                      timeInputLabel="Heure:"
+                      timeCaption="Heure"
+                      timeFormat="HH:mm"
+                      calendarStartDay={1}
                       wrapperClassName="datePicker"
                     />
                   </div>
