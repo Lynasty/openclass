@@ -37,7 +37,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="flex gap-3">
                   <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-700">
-                    {event.isFree ? "FREE" : `${price}`}
+                    {event.isFree ? "Gratuit" : `${price}`}
                   </p>
                   <p className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
                     {event.category.name}
@@ -45,7 +45,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
                 </div>
 
                 <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
-                  by{" "}
+                  de{" "}
                   <span className="text-primary-500">
                     {event.organizer.firstName} {event.organizer.lastName}
                   </span>
@@ -87,7 +87,9 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="p-bold-20 text-grey-600">What You'll Learn:</p>
+              <p className="p-bold-20 text-grey-600">
+                Ce que vous apprendrez :
+              </p>
               <p className="p-medium-16 lg:p-regular-18">{event.description}</p>
               <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">
                 {event.url}
@@ -99,12 +101,10 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
 
       {/* EVENTS with the same category */}
       <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <h2 className="h2-bold">Related Events</h2>
+        <h2 className="h2-bold">Événements liés</h2>
 
         <Collection
           data={relatedEvents?.data}
-          emptyTitle="No Events Found"
-          emptyStateSubtext="Come back later"
           collectionType="All_Events"
           limit={3}
           page={searchParams.page as string}

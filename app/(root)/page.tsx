@@ -28,7 +28,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             <p className="p-regular-20 md:p-regular-24">
               Ici, c'est l'endroit où on s'engage à faire pousser vos
               compétences pour un avenir brillant. Prêts à cultiver ensemble le
-              succès ? Let's go!
+              succès ?
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
               <Link href="#events">Explorer</Link>
@@ -59,8 +59,6 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
         <Collection
           data={events?.data}
-          emptyTitle="No Events Found"
-          emptyStateSubtext="Come back later"
           collectionType="All_Events"
           limit={6}
           page={page}

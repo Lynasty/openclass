@@ -115,7 +115,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    placeholder="Event title"
+                    placeholder="Titre"
                     {...field}
                     className="input-field"
                   />
@@ -191,7 +191,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       height={24}
                     />
                     <Input
-                      placeholder="Event location or online"
+                      placeholder="Lieu de l'événement ou en ligne."
                       {...field}
                       className="input-field"
                     />
@@ -219,7 +219,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       className="filter-grey"
                     />
                     <p className="ml-3 whitespace-nowrap text-grey-600">
-                      Start date:{" "}
+                      Date de début:{" "}
                     </p>
                     <DatePicker
                       selected={field.value}
@@ -252,7 +252,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       className="filter-grey"
                     />
                     <p className="ml-3 whitespace-nowrap text-grey-600">
-                      End date:{" "}
+                      Date de fin:{" "}
                     </p>
                     <DatePicker
                       selected={field.value}
@@ -280,15 +280,15 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image
-                      src="/assets/icons/dollar.svg"
-                      alt="dollar"
-                      width={24}
-                      height={24}
+                      src="/assets/icons/euro.svg"
+                      alt="euro"
+                      width={16}
+                      height={16}
                       className="filter-grey"
                     />
                     <Input
                       type="number"
-                      placeholder="Price"
+                      placeholder="Prix"
                       {...field}
                       className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
@@ -303,7 +303,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                                 htmlFor="isFree"
                                 className="whitespace-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                               >
-                                Free Ticket
+                                Gratuit
                               </label>
                               <Checkbox
                                 onCheckedChange={field.onChange}
@@ -356,7 +356,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
           disabled={form.formState.isSubmitting}
           className="button col-span-2 w-full"
         >
-          {form.formState.isSubmitting ? "Submitting..." : `${type} Event`}
+          {form.formState.isSubmitting ? "Enregistrement..." : `Enregistrer`}
         </Button>
       </form>
     </Form>

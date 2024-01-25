@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "OpenTea",
   description: "Cultivons les compétences",
   icons: {
-    icon: "/assets/images/logo.svg",
+    icon: "/assets/images/logo.png",
   },
 };
 

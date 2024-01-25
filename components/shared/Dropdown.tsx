@@ -54,7 +54,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
     <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
       <Select onValueChange={onChangeHandler} defaultValue={value}>
         <SelectTrigger className="select-field">
-          <SelectValue placeholder="Category" />
+          <SelectValue placeholder="Catégorie" />
         </SelectTrigger>
         <SelectContent>
           {categories.length > 0 &&
@@ -71,11 +71,11 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
       </Select>
       <AlertDialog>
         <AlertDialogTrigger className="p-medium-14 flex rounded-sm py-3 px-4 text-primary-500 hover:bg-primary-50 focus:text-primary-500">
-          Add
+          Ajouter
         </AlertDialogTrigger>
         <AlertDialogContent className="bg-white">
           <AlertDialogHeader>
-            <AlertDialogTitle>New Category</AlertDialogTitle>
+            <AlertDialogTitle>Nouvelle Catégorie</AlertDialogTitle>
             <AlertDialogDescription>
               <Input
                 id="inputC"
@@ -91,7 +91,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
             <AlertDialogAction
               onClick={() => startTransition(handleAddCategory)}
             >
-              Add
+              Ajouter
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -5,8 +5,8 @@ import Pagination from "./Pagination";
 
 type CollectionProps = {
   data: IEvent[];
-  emptyTitle: string;
-  emptyStateSubtext: string;
+  emptyTitle?: string;
+  emptyStateSubtext?: string;
   limit: number;
   page: number | string;
   totalPages?: number;
@@ -16,8 +16,8 @@ type CollectionProps = {
 
 const Collection = ({
   data,
-  emptyTitle,
-  emptyStateSubtext,
+  emptyTitle = "Aucun évènement trouvé",
+  emptyStateSubtext = "Revenez plus tard !",
   page,
   totalPages = 0,
   collectionType,
