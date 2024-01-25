@@ -230,7 +230,6 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       onChange={(date: Date) => field.onChange(date)}
                       showTimeSelect
                       minDate={new Date()}
-                      month
                       dateFormat="dd/MM/yyyy HH:mm"
                       timeInputLabel="Heure:"
                       timeCaption="Heure"
