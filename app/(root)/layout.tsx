@@ -3,13 +3,15 @@ import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 import { useState } from "react";
 
+const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
 
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(darkThemeMq.matches || false);
 
   const toggleDarkmode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
