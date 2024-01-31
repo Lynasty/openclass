@@ -25,17 +25,19 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <section className="bg-primary-50 bg-dotted-pattern bg-contain">
+      <section className="bg-dotted-pattern dark:bg-dotted-pattern-dark bg-contain">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
-            <h1 className="h1-bold">Cultivons les compétences de l'avenir !</h1>
-            <p className="p-regular-20 md:p-regular-24">
+            <h1 className="h1-bold text-secondary-foreground">
+              Cultivons les compétences de l'avenir !
+            </h1>
+            <p className="p-regular-20 md:p-regular-24 text-secondary-foreground">
               Ici, c'est l'endroit où on s'engage à faire pousser vos
               compétences pour un avenir brillant. Prêts à cultiver ensemble le
               succès ?
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#events">Explorer</Link>
+              <Link href="#events" className="text-white">Explorer</Link>
             </Button>
           </div>
           <Image
@@ -52,7 +54,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
         id="events"
         className="wrapper my-8 flex flex-col gap-8 md:gap-12"
       >
-        <h2 className="h2-bold">
+        <h2 className="h2-bold text-secondary-foreground">
           Votre confiance, <br /> notre succès
         </h2>
 
