@@ -80,14 +80,14 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
               <Input
                 id="inputC"
                 type="text"
-                placeholder="Category name"
+                placeholder="Nom"
                 className="input-field mt-3"
                 onChange={(e) => setNewCategory(e.target.value)}
               />
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Annuler</AlertDialogCancel>
             <AlertDialogAction
               onClick={() => startTransition(handleAddCategory)}
             >
