@@ -39,6 +39,10 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
     const organizer = await User.findById(userId);
     if (!organizer) throw new Error("Organizer not found");
 
+    if (event.isFree) {
+      event.price = "0";
+    }
+
     const newEvent = await Event.create({
       ...event,
       category: event.categoryId,
@@ -75,6 +79,10 @@ export async function updateEvent({ userId, event, path }: UpdateEventParams) {
     const eventToUpdate = await Event.findById(event._id);
     if (!eventToUpdate || eventToUpdate.organizer.toHexString() !== userId) {
       throw new Error("Unauthorized or event not found");
+    }
+
+    if (event.isFree) {
+      event.price = '0';
     }
 
     const updatedEvent = await Event.findByIdAndUpdate(
