@@ -82,6 +82,11 @@ body {
     hue-rotate(32deg) brightness(98%) contrast(92%);
 }
 
+.filter-white {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(217%)
+    hue-rotate(32deg) brightness(98%) contrast(92%);
+}
+
 /* ========================================== TAILWIND STYLES */
 @layer utilities {
   .wrapper {
