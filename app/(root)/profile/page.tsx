@@ -4,7 +4,8 @@ import { getEventsByUser } from "@/lib/actions/event.actions";
 import { getOrdersByUser } from "@/lib/actions/order.actions";
 import { IOrder } from "@/lib/database/models/order.model";
 import { SearchParamProps } from "@/types";
-import { auth } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -19,9 +20,39 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
   const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
   const organizedEvents = await getEventsByUser({ userId, page: eventsPage });
-
+  const user = await currentUser();
   return (
     <>
+      {/* My Info */}
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+        <div className="wrapper flex items-center justify-center sm:justify-between">
+          <h3 className="h3-bold text-center sm:text-left">Mes informations</h3>
+        </div>
+      </section>
+
+      <section className="wrapper my-8">
+        <div className="flex flex-col md:flex-row gap-8 justify-center md:justify-start">
+          <div className="flex flex-col gap-2">
+            <p className="font-bold border-b-2">Nom d'utilisateur</p>
+            <p>{user?.username}</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-bold border-b-2">Nom complet</p>
+            <p>
+              {user?.firstName} {user?.lastName}
+            </p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-bold border-b-2">Emails</p>
+            <ul className="list-disc">
+              {user?.emailAddresses.map((email) => (
+                <li key={email.emailAddress}>{email.emailAddress}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* My Tickets */}
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
         <div className="wrapper flex items-center justify-center sm:justify-between">
@@ -35,8 +66,8 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       <section className="wrapper my-8">
         <Collection
           data={orderedEvents}
-          emptyTitle="No event tickets purchased yet"
-          emptyStateSubtext="No worries - plenty of exciting events to explore!"
+          emptyTitle="Aucun billet d'événement n'a encore été acheté"
+          emptyStateSubtext="Vos futurs achats apparaîtront ici !"
           collectionType="My_Tickets"
           limit={3}
           page={ordersPage}
