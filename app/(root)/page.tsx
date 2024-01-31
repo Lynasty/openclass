@@ -1,6 +1,7 @@
 import CategoryFilter from "@/components/shared/CategoryFilter";
 import Collection from "@/components/shared/Collection";
 import Search from "@/components/shared/Search";
+import SortingFilter from "@/components/shared/SortingFilter";
 import { Button } from "@/components/ui/button";
 import { getAllEvents } from "@/lib/actions/event.actions";
 import { SearchParamProps } from "@/types";
@@ -11,12 +12,15 @@ export default async function Home({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
   const searchText = (searchParams?.query as string) || "";
   const category = (searchParams?.category as string) || "";
+  const sorting = (searchParams?.sort as string) || "";
 
   const events = await getAllEvents({
     query: searchText,
     category,
+    sorting,
     page,
     limit: 6,
+    upcomingEventsOnly: true,
   });
 
   return (
@@ -55,6 +59,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search />
           <CategoryFilter />
+          <SortingFilter />
         </div>
 
         <Collection

@@ -108,6 +108,8 @@ export async function getAllEvents({
   limit = 6,
   page,
   category,
+  sorting,
+  upcomingEventsOnly,
 }: GetAllEventsParams) {
   try {
     await connectToDatabase();
@@ -118,16 +120,31 @@ export async function getAllEvents({
     const categoryCondition = category
       ? await getCategoryByName(category)
       : null;
+    const upcomingEventOnlyCondition = upcomingEventsOnly
+      ? { startDateTime: { $gte: new Date() } }
+      : {};
     const conditions = {
       $and: [
         titleCondition,
         categoryCondition ? { category: categoryCondition._id } : {},
+        upcomingEventOnlyCondition,
       ],
     };
 
+    const sortCondition: any = {};
+    if (sorting) {
+      if (sorting === "price_ASC") {
+        sortCondition.price = "asc";
+      } else if (sorting === "price_DESC") {
+        sortCondition.price = "desc";
+      }
+    } else {
+      sortCondition.startDateTime = "asc";
+    }
+
     const skipAmount = (Number(page) - 1) * limit;
     const eventsQuery = Event.find(conditions)
-      .sort({ createdAt: "desc" })
+      .sort(sortCondition)
       .skip(skipAmount)
       .limit(limit);
 
