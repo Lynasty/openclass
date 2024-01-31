@@ -1,11 +1,16 @@
-import { useTheme } from 'next-themes';
+"use client";
+import { useTheme } from "next-themes";
 
 const LogoPath = () => {
-
   const { resolvedTheme } = useTheme();
   let src;
+  let theme = resolvedTheme;
+  const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  switch (resolvedTheme) {
+  if (localStorage.theme) {
+    theme = localStorage.theme;
+  }
+  switch (theme) {
     case "light":
       src = "/assets/images/logo.png";
       break;
@@ -13,11 +18,11 @@ const LogoPath = () => {
       src = "/assets/images/logo-dark.png";
       break;
     default:
-      src = "/assets/images/logo.png";
+      src = isDark ? "/assets/images/logo-dark.png" : "/assets/images/logo.png";
       break;
   }
 
   return src;
-}
+};
 
-export default LogoPath
+export default LogoPath;

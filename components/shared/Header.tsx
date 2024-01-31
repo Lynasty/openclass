@@ -24,7 +24,8 @@ const Header = () => {
 
         <div className="flex w-32 justify-end gap-3 items-center">
           <SignedIn>
-            <UserButton afterSignOutUrl="/" />
+            <UserButton
+              afterSignOutUrl="/"/>
             <MobileNav />
           </SignedIn>
           <SignedOut>

@@ -1,6 +1,5 @@
 "use client";
-
-import * as React from "react";
+import { useEffect } from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 
@@ -15,6 +14,21 @@ import {
 export function ModeToggle() {
   const { setTheme } = useTheme();
 
+  useEffect(() => {
+    if (localStorage.theme) {
+      setTheme(localStorage.theme);
+    } else {
+      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      isDark ? setTheme('dark') : setTheme('light');
+    }
+  }, [])
+
+  const setThemeLocal = (theme:string) => {
+    setTheme(theme);
+    localStorage.theme = theme;
+  }
+  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,13 +39,13 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem onClick={() => setThemeLocal("light")}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem onClick={() => setThemeLocal("dark")}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem onClick={() => setThemeLocal("system")}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
