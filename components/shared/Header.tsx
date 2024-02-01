@@ -5,16 +5,15 @@ import { Button } from "../ui/button";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 import { ModeToggle } from "./ModeToggle";
-import LogoPath from "@/lib/utils/LogoPath";
+import LogoPath from "./LogoPath";
 
 const Header = () => {
-  const logoSrc = LogoPath();
 
   return (
     <header className="w-full border-b">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
-          <Image src={logoSrc} width={128} height={38} alt="Logo" />
+          <LogoPath />
         </Link>
         <SignedIn>
           <nav className="md:flex-between hidden w-full max-w-xs">
