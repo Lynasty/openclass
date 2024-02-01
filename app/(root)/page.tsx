@@ -26,8 +26,15 @@ export default async function Home({ searchParams }: SearchParamProps) {
   return (
     <>
       <section className="bg-dotted-pattern dark:bg-dotted-pattern-dark bg-contain">
-        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
-          <div className="flex flex-col justify-center gap-8">
+        <div className="wrapper pt-0 grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+            <Image
+              className="w-full h-full max-h-[70vh] object-cover object-center m-auto 2xl:max-h-[100vh]"
+              src="/assets/images/hero-girl.jpg"
+              alt="Hero"
+              width={1000}
+              height={1000}
+            />
+          <div className="flex flex-col justify-center gap-8 2xl:px-8">
             <h1 className="h1-bold text-secondary-foreground">
               Cultivons les compétences de l'avenir !
             </h1>
@@ -44,13 +51,6 @@ export default async function Home({ searchParams }: SearchParamProps) {
               <Link href="#events">Explorer</Link>
             </Button>
           </div>
-          <Image
-            className="max-h-[70vh] object-contain object-center m-auto 2xl:max-h-[50vh]"
-            src="/assets/images/hero-learn.jpg"
-            alt="Hero"
-            width={1000}
-            height={1000}
-          />
         </div>
       </section>
 
