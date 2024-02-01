@@ -51,7 +51,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
     getCategories();
   }, []);
   return (
-    <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-neutral-800 px-4 py-2">
+    <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-neutral-800 pl-1 pr-4 py-2">
       <Select onValueChange={onChangeHandler} defaultValue={value}>
         <SelectTrigger className="select-field">
           <SelectValue placeholder="Catégorie" />
