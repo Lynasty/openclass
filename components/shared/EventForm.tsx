@@ -18,7 +18,6 @@ import { Textarea } from "../ui/textarea";
 import { FileUploader } from "./FileUploader";
 import { useState } from "react";
 import Image from "next/image";
-import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Checkbox } from "../ui/checkbox";
 import { useUploadThing } from "@/lib/uploadthing";
@@ -26,9 +25,7 @@ import { handleError } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { createEvent, updateEvent } from "@/lib/actions/event.actions";
 import { IEvent } from "@/lib/database/models/event.model";
-import fr from "date-fns/locale/fr";
 import DatepickerRange from "./DatepickerRange";
-registerLocale("fr", fr); 
 
 type EventFormProps = {
   userId: string;
@@ -207,7 +204,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         </div>
 
         <DatepickerRange form={form} />
-        
+
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
