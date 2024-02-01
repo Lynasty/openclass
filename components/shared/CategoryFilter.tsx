@@ -51,7 +51,7 @@ const CategoryFilter = () => {
   return (
     <Select
       onValueChange={(value: string) => onSelectCategory(value)}
-      value={hasCategory ? hasCategory.toString() : 'All'}
+      value={hasCategory ? hasCategory.toString() : ''}
     >
       <SelectTrigger className="select-field">
         <SelectValue placeholder="Catégorie" />
