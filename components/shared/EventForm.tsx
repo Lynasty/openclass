@@ -27,6 +27,7 @@ import { useRouter } from "next/navigation";
 import { createEvent, updateEvent } from "@/lib/actions/event.actions";
 import { IEvent } from "@/lib/database/models/event.model";
 import fr from "date-fns/locale/fr";
+import DatepickerRange from "./DatepickerRange";
 registerLocale("fr", fr); 
 
 type EventFormProps = {
@@ -205,82 +206,8 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
           />
         </div>
 
-        <div className="flex flex-col gap-5 md:flex-row">
-          <FormField
-            control={form.control}
-            name="startDateTime"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-neutral-800 px-4 py-2">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      alt="Calendar start"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
-                    <p className="ml-3 whitespace-nowrap text-grey-600">
-                      Date de début:{" "}
-                    </p>
-                    <DatePicker
-                      locale="fr"
-                      calendarStartDay={1}
-                      selected={field.value}
-                      onChange={(date: Date) => field.onChange(date)}
-                      showTimeSelect
-                      minDate={new Date()}
-                      dateFormat="dd/MM/yyyy HH:mm"
-                      timeInputLabel="Heure:"
-                      timeCaption="Heure"
-                      timeFormat="HH:mm"
-                      wrapperClassName="datePicker"
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="endDateTime"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-neutral-800 px-4 py-2">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      alt="Calendar end"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
-                    <p className="ml-3 whitespace-nowrap text-grey-600">
-                      Date de fin:{" "}
-                    </p>
-                    <DatePicker
-                      locale="fr"
-                      selected={field.value}
-                      onChange={(date: Date) => field.onChange(date)}
-                      showTimeSelect
-                      minDate={new Date()}
-                      dateFormat="dd/MM/yyyy HH:mm"
-                      timeInputLabel="Heure:"
-                      timeCaption="Heure"
-                      timeFormat="HH:mm"
-                      calendarStartDay={1}
-                      wrapperClassName="datePicker"
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
+        <DatepickerRange form={form} />
+        
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
