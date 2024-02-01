@@ -40,7 +40,7 @@ const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
         type="submit"
         role="link"
         size="lg"
-        className="button text-white sm:w-fit"
+        className="button text-neutral-50 sm:w-fit"
       >
         {event.isFree ? "Obtenir" : "Acheter"}
       </Button>

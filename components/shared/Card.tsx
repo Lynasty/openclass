@@ -22,7 +22,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
   }).format(parseFloat(event.price));
 
   return (
-    <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
+    <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
       <Link
         href={`/events/${event._id}`}
         style={{ backgroundImage: `url(${event.imageUrl})` }}
@@ -48,20 +48,20 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
       <div className="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4">
         {!hidePrice && (
           <div className="flex gap-2">
-            <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-60">
+            <span className="p-semibold-14 w-min rounded-full bg-green-100 dark:bg-green-700 px-4 py-1 text-black">
               {event.isFree ? "Gratuit" : `${price}`}
             </span>
             <Link
               scroll={false}
               href={`/?category=${event.category.name.toString()}`}
-              className="p-semibold-14 min-w-min max-w-64  rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1"
+              className="p-semibold-14 min-w-min max-w-64  rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 dark:text-neutral-300 line-clamp-1"
             >
               {event.category.name}
             </Link>
           </div>
         )}
 
-        <p className="p-medium-16 p-medium-18 text-grey-500">
+        <p className="p-medium-16 p-medium-18 text-grey-500 dark:text-neutral-300">
           {formatDateTime(event.startDateTime).dateTime}
         </p>
 
@@ -72,7 +72,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
         </Link>
 
         <div className="flex-between w-full">
-          <p className="p-medium-14 md:p-medium-16 text-grey-600">
+          <p className="p-medium-14 md:p-medium-16 text-grey-600 dark:text-neutral-400">
             {event.organizer.firstName} {event.organizer.lastName}
           </p>
 

@@ -36,8 +36,12 @@ export default async function Home({ searchParams }: SearchParamProps) {
               compétences pour un avenir brillant. Prêts à cultiver ensemble le
               succès ?
             </p>
-            <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#events" className="text-white">Explorer</Link>
+            <Button
+              size="lg"
+              asChild
+              className="button w-full text-neutral-50 sm:w-fit"
+            >
+              <Link href="#events">Explorer</Link>
             </Button>
           </div>
           <Image

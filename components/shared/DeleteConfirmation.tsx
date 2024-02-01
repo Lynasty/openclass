@@ -38,13 +38,13 @@ export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
           <AlertDialogTitle>
             Êtes-vous sûr(e) de vouloir supprimer ?
           </AlertDialogTitle>
-          <AlertDialogDescription className="p-regular-16 text-grey-600">
+          <AlertDialogDescription className="p-regular-16 text-grey-600 dark:text-grey-400">
             Cela supprimera définitivement cet événement
           </AlertDialogDescription>
         </AlertDialogHeader>
 
         <AlertDialogFooter>
-          <AlertDialogCancel>Annuler</AlertDialogCancel>
+          <AlertDialogCancel className="bg-neutral-50 text-neutral-600">Annuler</AlertDialogCancel>
 
           <AlertDialogAction
             onClick={() =>
@@ -52,6 +52,7 @@ export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
                 await deleteEvent({ eventId, path: pathname });
               })
             }
+            className="text-neutral-50"
           >
             {isPending ? "Suppression..." : "Supprimer"}
           </AlertDialogAction>

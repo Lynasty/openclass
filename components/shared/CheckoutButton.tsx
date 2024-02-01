@@ -18,7 +18,7 @@ const CheckoutButton = ({ event }: { event: IEvent }) => {
         <>
           <SignedOut>
             <Button asChild className="button rounded-full" size="lg">
-              <Link className="text-white" href="/sign-in">
+              <Link className="text-neutral-50" href="/sign-in">
                 Acheter
               </Link>
             </Button>

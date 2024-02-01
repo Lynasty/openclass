@@ -35,8 +35,8 @@ module.exports = withUt({
           400: "#AFAFAF", // Disabled - color name in figma
           50: "#F6F6F6", // White Grey - color name in figma
         },
-        black: "#000000",
-        white: "#FFFFFF",
+        black: "hsl(var(--text-default-black))",
+        white: "hsl(var(--text-default-white))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
