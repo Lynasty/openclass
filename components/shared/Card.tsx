@@ -19,7 +19,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
   const price = new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR",
-  }).format(parseFloat(event.price));
+  }).format(event.price);
 
   return (
     <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
